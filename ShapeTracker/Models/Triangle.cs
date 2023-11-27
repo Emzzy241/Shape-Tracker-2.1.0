@@ -14,6 +14,8 @@ namespace ShapeTracker.Models
 
     // Creating a public auto-implemented property called Side2
     public int Side2 { get; set; }
+
+    private int _side3;
     
     
     
@@ -21,10 +23,17 @@ namespace ShapeTracker.Models
     
 
     // Adding a simple constructor, we are explicitly defining our constructor, Immediately we do this, C£ takes the costructor it implicitly created for us when we created an empty class
-    public Triangle(int length1, int length2)
+    public Triangle(int length1, int length2, int length3)
     {
         _side1 = length1;
         Side2 = length2;
+        _side3 = length3;
+    }
+
+    // Writing a Getter for my side3
+    public int GetSide3()
+    {
+        return _side3;
     }
 
 
