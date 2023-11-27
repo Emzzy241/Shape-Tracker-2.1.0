@@ -11,6 +11,9 @@ namespace ShapeTracker.Tests
   public class TriangleTests
   {
 
+    // All of our tests are public methods: This allows the tools runningour tests to access them
+    // All of our test are void methods: Meaning they do not return any thing; Never forget, a method in C# must return something
+
     // First Test: Our test will confirm Triangle objects of the Triangle type can be created successfully.
     [TestMethod]
     public void TriangleConstructor_CreatesInstanceOfTriangle_Triangle()
@@ -60,6 +63,20 @@ namespace ShapeTracker.Tests
       int result = newTriangle.Side2;
       // Assert
       Assert.AreEqual(length2, result);
+    }
+
+    // Fifth Test: Adding and testing a set to our auto-implemented property.
+
+     [TestMethod]
+    public void SetSide2_SetsValueOfSide2_Void()
+    {
+      // Arrange
+      Triangle newTriangle = new Triangle(3,4);
+      int newLength2 = 6;
+      // Act
+      newTriangle.Side2 = newLength2;
+      // Assert
+      Assert.AreEqual(newLength2, newTriangle.Side2);
     }
 
   }

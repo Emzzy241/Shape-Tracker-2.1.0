@@ -13,7 +13,7 @@ namespace ShapeTracker.Models
     }
 
     // Creating a public auto-implemented property called Side2
-    public int Side2 { get; }
+    public int Side2 { get; set; }
     
     
     
