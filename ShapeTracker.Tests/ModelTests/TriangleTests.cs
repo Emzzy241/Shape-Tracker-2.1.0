@@ -34,19 +34,19 @@ namespace ShapeTracker.Tests
     }
 
     // Third test: We want to be able to get and set side for our private field _side1. We have done for getting, its time for setting
+    
 
-
-    // [TestMethod]
-    // public void SetSide1_SetsValueOfSide1_Void()
-    // {
-    //   // Arrange
-    //   Triangle newTriangle = new Triangle(3);
-    //   int newLength1 = 44;
-    //   // Act
-    //   newTriangle.Side1 = newLength1;
-    //   // Assert
-    //   Assert.AreEqual(newLength1, newTriangle.Side1);
-    // }
+    [TestMethod]
+    public void SetSide1_SetsValueOfSide1_Void()
+    {
+      // Arrange
+      Triangle newTriangle = new Triangle(3);
+      int newLength1 = 44;
+      // Act
+      newTriangle.Side1 = newLength1;
+      // Assert
+      Assert.AreEqual(newLength1, newTriangle.Side1);
+    }
 
   }
 }
