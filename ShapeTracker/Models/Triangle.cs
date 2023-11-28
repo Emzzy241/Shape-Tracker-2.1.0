@@ -1,4 +1,6 @@
 // 
+using System;
+using System.Collections.Generic;
 
 namespace ShapeTracker.Models
 {
@@ -18,16 +20,28 @@ namespace ShapeTracker.Models
     private int _side3;
     
     
-    
+    // a private static field called _instances set to a new, empty list of triangles.
+    private static List<Triangle> _instances = new List<Triangle>() {};
+
     
     
 
     // Adding a simple constructor, we are explicitly defining our constructor, Immediately we do this, C£ takes the costructor it implicitly created for us when we created an empty class
     public Triangle(int length1, int length2, int length3)
     {
+      
         _side1 = length1;
         Side2 = length2;
         _side3 = length3;
+        // Telling C# to add the Triangle object to our list
+        _instances.Add(this);
+    }
+
+    // a public getter method called GetAll() that returns the _instances field.
+    public static List<Triangle> GetAll()
+    {
+      // Helps in returning all of the triangle object we told our Triangle constructor to add
+      return _instances;
     }
 
     
@@ -63,6 +77,14 @@ namespace ShapeTracker.Models
         return "isoceles triangle";
       }
     }
+
+      public static void ClearAll()
+    {
+      _instances.Clear();
+    }
+
+    
+    // 
 
   }
 }

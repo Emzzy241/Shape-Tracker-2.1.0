@@ -1,16 +1,20 @@
-
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeTracker.Models;
 using System.Collections.Generic;
+using System;
 
 //  we include the attribute [TestMethod] to identify this method as a test, similar to how we list [TestClass] above our TriangleTests class in order to identify it as a class of tests.
 
 namespace ShapeTracker.Tests
 {
   [TestClass]
-  public class TriangleTests
+  public class TriangleTests : IDisposable
   {
+
+    public void Dispose()
+    {
+      Triangle.ClearAll();
+    }
 
     // All of our tests are public methods: This allows the tools runningour tests to access them
     // All of our test are void methods: Meaning they do not return any thing; Never forget, a method in C# must return something
@@ -180,24 +184,31 @@ namespace ShapeTracker.Tests
     
     }
 
-
     // Next: Testing the Private static field _instances through its getter and setter method GetAll()
     
     // Twelfth Test: Identifying the simplest possible behaviour the program must exhibit which is: creating our private static _instances field along with its getter method, GetAll()
 
-    // [TestMethod]
-    // public void GetAll_ReturnsAllTriangleInstances_List()
-    // {
-    //   // Arrange
-    //   Triangle tri1 = new Triangle(2, 2, 9);
-    //   Triangle tri2 = new Triangle(21, 3, 9);
-    //   Triangle tri3 = new Triangle(1, 3, 9);
-    //   List<Triangle> expected = new List<Triangle> { tri1, tri2, tri3 };
-    //   // Act
-    //   List<Triangle> actualResult = Triangle.GetAll();
-    //   // Assert
-    //   CollectionAssert.AreEqual(expected, actualResult);
-    // }
+    [TestMethod]
+    public void GetAll_ReturnsAllTriangleInstances_List()
+    {
+      // Arrange
+      Triangle tri1 = new Triangle(2, 2, 9);
+      Triangle tri2 = new Triangle(21, 3, 9);
+      Triangle tri3 = new Triangle(1, 3, 9);
+      List<Triangle> expected = new List<Triangle> { tri1, tri2, tri3 };
+      // Act
+      List<Triangle> actualResult = Triangle.GetAll();
+      // Assert
+      CollectionAssert.AreEqual(expected, actualResult);
+    
+      // Our test still failed
+      //Well, the issue is not obvious... In fact, our code and test are written perfectly, and the issue is in our tests: because the tests will run in order, by the time it gets to our final GetAll test, we've already many, many Triangle objects to our static list — 11 to be precise!
+
+      // Remember that each time a new Triangle object is created by the constructor, the entire Triangle class has a new object added to its static List of Triangle objects. We can't reset the static list unless we manually clear the list (like with a static ClearAll() method)! So, when our GetAll test runs, it compares the expected list of 3 triangles with a list of 14 Triangle objects (11 from the previous tests and 3 from the GetAll test).
+
+      // Well, we can solve this issue with a teardown method that will clear out _instances between each test. Let's learn how to do that in the next lesson!
+      // To forcefully pass this test, we can comment out all of our previous tests and leave only the Last one(GetAll()), thats an awful way to solve the issue. Lets learn a new concept that will help us solve the error
+    }
  
  
   }
