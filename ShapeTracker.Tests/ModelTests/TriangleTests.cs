@@ -2,6 +2,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShapeTracker.Models;
+using System.Collections.Generic;
 
 //  we include the attribute [TestMethod] to identify this method as a test, similar to how we list [TestClass] above our TriangleTests class in order to identify it as a class of tests.
 
@@ -159,31 +160,30 @@ namespace ShapeTracker.Tests
       string triType = isocelesTri.CheckType();
       
       // Assert
-      Assert.AreEqual("scalene triangle", triType);
+      Assert.AreEqual("isoceles triangle", triType);
+    
+    }
+
+    // Eleveth Test: Testing the "equilateral triangle" Path in the CheckType() Method
+    [TestMethod]
+     public void EquilateralTriangle_ChecksIfItsEquilateralTriangle_CheckType()
+    {
+      // Test for isoceles: when all sides are equal
+      // Arrange
+      Triangle equilateralTri = new Triangle(4, 4, 4);
+      
+      // Act
+      string triType = equilateralTri.CheckType();
+      
+      // Assert
+      Assert.AreEqual("equilateral triangle", triType);
     
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 13th Test: Testing the Private static field _instances through its getter and setter method GetAll()
-    // Identifying the simplest possible behaviour the program must exhibit which is: creating our private static _instances field along with its getter method, GetAll()
+    // Next: Testing the Private static field _instances through its getter and setter method GetAll()
+    
+    // Twelfth Test: Identifying the simplest possible behaviour the program must exhibit which is: creating our private static _instances field along with its getter method, GetAll()
 
     // [TestMethod]
     // public void GetAll_ReturnsAllTriangleInstances_List()
