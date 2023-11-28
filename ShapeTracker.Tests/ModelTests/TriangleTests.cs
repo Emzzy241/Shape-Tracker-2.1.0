@@ -130,6 +130,21 @@ namespace ShapeTracker.Tests
 
     }
 
+    // Ninth Test: Testing the "scalene triangle" Path in the CheckType() Method
+
+    [TestMethod]
+    public void ScaleneTriangle_ChecksIfItsScaleneTriangle_CheckType()
+    {
+      // Arrange
+      Triangle scaleneTri = new Triangle(3, 4, 5);
+      
+      // Act
+      string triType = scaleneTri.CheckType();
+      
+      // Assert
+      Assert.AreEqual("scalene triangle", triType);
+    
+    }
 
 
 
