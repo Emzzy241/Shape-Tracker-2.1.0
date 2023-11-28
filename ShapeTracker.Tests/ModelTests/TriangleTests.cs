@@ -146,6 +146,23 @@ namespace ShapeTracker.Tests
     
     }
 
+    // Tenth test: Testing the "isosceles triangle" Path in the CheckType() Method
+
+    [TestMethod]
+    public void IsocelesTriangle_ChecksIfItsIsocelesTriangle_CheckType()
+    {
+      // Test for isoceles: when only two of the sides have the same length, but not the other.
+      // Arrange
+      Triangle isocelesTri = new Triangle(5, 4, 4);
+      
+      // Act
+      string triType = isocelesTri.CheckType();
+      
+      // Assert
+      Assert.AreEqual("scalene triangle", triType);
+    
+    }
+
 
 
 

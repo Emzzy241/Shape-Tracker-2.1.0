@@ -44,7 +44,7 @@ namespace ShapeTracker.Models
     }
 
     // CheckType() method
-    public string CheckType()
+   public string CheckType()
     {
       if ((Side1 > (Side2 + _side3)) || (Side2 > (Side1 + _side3)) || (_side3 > (Side1 + Side2))) 
       {
@@ -54,9 +54,9 @@ namespace ShapeTracker.Models
       {
         return "scalene triangle";
       }
-      else
+      else 
       {
-        return "";
+        return "isosceles triangle";
       }
     }
 
