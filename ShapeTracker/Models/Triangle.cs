@@ -30,10 +30,23 @@ namespace ShapeTracker.Models
         _side3 = length3;
     }
 
-    // Writing a Getter for my side3
+    
+    // A getter method for _side3 private field
     public int GetSide3()
     {
         return _side3;
+    }
+
+    // A setter method for _side3 private field
+    public void SetSide3(int newSide)
+    {
+        _side3 = newSide;
+    }
+
+    // CheckType() method
+    public string CheckType()
+    {
+        return "not a triangle";
     }
 
 

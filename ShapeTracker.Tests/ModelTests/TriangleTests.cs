@@ -82,7 +82,7 @@ namespace ShapeTracker.Tests
     // Sixth Test: The next simplest behavior we'll tackle is creating a get action for the third side of a triangle. In terms of code, for our third side we'll create a private field called _side3, and we'll need to create a getter method called GetSide3() in order to access it.
 
     [TestMethod]
-    public void GetSide3_ReturbsSide3_Int()
+    public void GetSide3_ReturnsSide3_Int()
     {
       // Arrange
       int length3 = 55;
@@ -92,5 +92,81 @@ namespace ShapeTracker.Tests
       // Assert
       Assert.AreEqual(length3, result);
     }
+
+    // Seventh Test: Testing the private field _side3 through its setter method SetSide3()
+  
+  
+    [TestMethod]
+    public void SetSide3_SetsValueOfSide3_Void()
+    {
+      // Arrage, Act, Assert are easy orgaizational tricks that helps demystify the testing process and keep our testig clean. They basically keep our test process simple and easy.
+
+      // Arrange --> Gathering, declaring, and creating all necessary componenets for the test
+      Triangle newTriangle = new Triangle(3, 4, 8);
+      int newLength3 = 8;
+      
+      // Act --> Invoking(calling) the fuctionality we're testing, often by calling a method or retrieving a property.
+      newTriangle.SetSide3(newLength3);
+      
+      // Assert --> We confirm the functionality works as expected by comparing its anticipated(expected) output with the actual output
+      // Assert.AreEqual(newLength3, newTriangle.GetSide3());
+      Assert.AreEqual(newLength3, newTriangle.GetSide3());
+
+    }
+
+
+    // Eight Test: Testing the "not a triangle" Path in the CheckType() Method
+
+    [TestMethod]
+    public void NotATriangle_ChecksIfItsNotATriangle_CheckType()
+    {
+      Triangle newTriangle = new Triangle(3, 4, 8);
+
+      // Act --> Invoking(calling) the fuctionality we're testing, often by calling a method or retrieving a property.
+      string triType =  newTriangle.CheckType();
+      
+      // Assert --> We confirm the functionality works as expected by comparing its anticipated(expected) output with the actual output
+      Assert.AreEqual("not a triangle", triType);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 13th Test: Testing the Private static field _instances through its getter and setter method GetAll()
+    // Identifying the simplest possible behaviour the program must exhibit which is: creating our private static _instances field along with its getter method, GetAll()
+
+    // [TestMethod]
+    // public void GetAll_ReturnsAllTriangleInstances_List()
+    // {
+    //   // Arrange
+    //   Triangle tri1 = new Triangle(2, 2, 9);
+    //   Triangle tri2 = new Triangle(21, 3, 9);
+    //   Triangle tri3 = new Triangle(1, 3, 9);
+    //   List<Triangle> expected = new List<Triangle> { tri1, tri2, tri3 };
+    //   // Act
+    //   List<Triangle> actualResult = Triangle.GetAll();
+    //   // Assert
+    //   CollectionAssert.AreEqual(expected, actualResult);
+    // }
+ 
+ 
   }
 }
