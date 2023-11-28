@@ -209,6 +209,24 @@ namespace ShapeTracker.Tests
       // Well, we can solve this issue with a teardown method that will clear out _instances between each test. Let's learn how to do that in the next lesson!
       // To forcefully pass this test, we can comment out all of our previous tests and leave only the Last one(GetAll()), thats an awful way to solve the issue. Lets learn a new concept that will help us solve the error
     }
+
+    // Thirteenth Test: Testing the Private Static Field _instances through its Setter Method ClearAll()
+
+     [TestMethod]
+    public void ClearAll_DeletesAllTriangleInList_Void()
+    {
+      // Arrange
+      Triangle tri1 = new Triangle(2, 2, 9);
+      Triangle tri2 = new Triangle(21, 3, 9);
+      Triangle tri3 = new Triangle(1, 3, 9);
+      List<Triangle> expected = new List<Triangle> { };
+      // Act
+      Triangle.ClearAll();
+      // Assert
+      CollectionAssert.AreEqual(expected, Triangle.GetAll());
+    }
+
+
  
  
   }
