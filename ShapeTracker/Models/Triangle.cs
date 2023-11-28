@@ -46,7 +46,16 @@ namespace ShapeTracker.Models
     // CheckType() method
     public string CheckType()
     {
-        return "not a triangle";
+      // dding the actual branching logic that tests whether a triangle is not a triangle, although it is not the  the very least amount of code to get our test to pass
+        if ((_side1 > (Side2 + _side3)) || (Side2 > (_side1 + _side3)) || (_side3 > (_side1 + Side2)))
+        {
+          return "not a triangle";
+        } 
+        else 
+        {
+          return "";
+        }
+
     }
 
 
