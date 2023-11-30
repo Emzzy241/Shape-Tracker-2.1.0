@@ -125,6 +125,7 @@ namespace ShapeTracker.Tests
     [TestMethod]
     public void NotATriangle_ChecksIfItsNotATriangle_CheckType()
     {
+      // Arrange: Gathering, declaring, and creating all necessary components for the test.
       Triangle newTriangle = new Triangle(3, 4, 8);
 
       // Act --> Invoking(calling) the fuctionality we're testing, often by calling a method or retrieving a property.

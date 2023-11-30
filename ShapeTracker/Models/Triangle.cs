@@ -8,6 +8,7 @@ namespace ShapeTracker.Models
   {
     private int _side1;
 
+    // value is a unique keyword our C# property possesses
     public int Side1 
     {
        get { return _side1; }
@@ -79,12 +80,13 @@ namespace ShapeTracker.Models
     }
 
       public static void ClearAll()
-    {
+      {
       _instances.Clear();
-    }
+      }
 
     
-    // 
+    // After writing the Test for ClearAll() and SetAll()... Now its time to implement the UI for it
+    
 
   }
 }
