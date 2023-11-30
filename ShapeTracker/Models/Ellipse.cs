@@ -33,12 +33,14 @@ namespace ShapeTracker.Models
         return _pi;
     }
 
-    
+    // Pi is a constant, no setter was needed because I do not want to set the value for a constant
 
-    // public double AreaOfEllipse()
-    // {
-    //   return PI * RadiusVal1 * RadiusVal2;
-    // }
+
+    public double AreaOfEllipse()
+    {
+      double myPi = GetPiVal();
+      return myPi * RadiusVal1 * RadiusVal2;
+    }
 
 
 
