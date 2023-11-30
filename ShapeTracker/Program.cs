@@ -22,11 +22,13 @@ namespace ShapeTracker
         switch (userAns)
         {
           case "t":
-            Console.WriteLine("Lets track some Triangles");
-            
-            Console.WriteLine("We'll calculate what type of triangle you have based off of the lengths of the triangle's 3 sides.");
-        
-        // Taking in the inputs from my users
+                  Console.WriteLine();
+                  Console.WriteLine();
+                  Console.WriteLine("Lets track some Triangles");
+                  
+                  Console.WriteLine("We'll calculate what type of triangle you have based off of the lengths of the triangle's 3 sides.");
+              
+                  // Taking in the inputs from my users
 
                 Console.WriteLine("Please enter a number");
                 string stringNumber1 = Console.ReadLine();
@@ -49,7 +51,7 @@ namespace ShapeTracker
                 // NOTE: Any new method we create in our Program class(that contains our UI logic) should be static. We dont want to have to create an instance of the Program class in order to call the method.
                 // Calling the static ConfirmOrEditTriangle() method
                 ConfirmOrEditTriangle(tri);
-    }
+  
 
     // Writing the Static ConfirmOrEditTriangle() method
 
@@ -107,7 +109,7 @@ namespace ShapeTracker
                         Console.WriteLine("What's next?");
                         Console.WriteLine("Would you like to check a new triangle (new)?");
                         // PrintAllTriangles();
-                        Console.WriteLine("Please enter 'new' to check the type of a new triangle. To see all triangles created, enter 'get', to clear all, enter 'clear'");
+                        Console.WriteLine("Please enter 'new' to track a new shape. To see all triangles created, enter 'get', to clear all, enter 'clear'");
                         string userResponse = Console.ReadLine().ToUpper(); 
                         
                         if (userResponse == "NEW")
@@ -196,12 +198,174 @@ namespace ShapeTracker
 
 
                         
-                        break;
+                break;
+            case "r":
+                Console.WriteLine("Let's track some Rectangles");
+                Console.WriteLine();
+                Console.WriteLine();
+
+                Console.WriteLine("We'll calculate the area of a rectangle based off of the lengths of 2 sides");
+
+                Console.WriteLine("Please enter a number");
+                string newStringNumber1 = Console.ReadLine();
+
+                Console.WriteLine("Enter another number");
+                string newStringNumber2 = Console.ReadLine();
+
+                 int rectFirstSide = int.Parse(newStringNumber1);
+                int rectSecondSide = int.Parse(newStringNumber2);
+
+                
+                Rectangle rect = new Rectangle(rectFirstSide, rectSecondSide);
+                ConfirmOrEditRectangle(rect);
+
+                static void ConfirmOrEditRectangle(Rectangle rect)
+                {
+            
+                    Console.WriteLine("Please confirm that you entered in your rectangle sides correctly:");
+                    Console.WriteLine($"Side 1 has a length of {rect.Side1}.");
+                    Console.WriteLine($"Side 2 has a length of {rect.Side2}.");
+                    Console.WriteLine("Is that correct? Enter 'yes' to proceed, or 'no' to re-enter the rectangle sides's sides. ");
+                    string userInput = Console.ReadLine().ToLower();  
+
+                    if(userInput == "yes")
+                    {
+                        CalculateArea(rect);
+                    }
+                    else if(userInput == "no")
+                    {
+                        Console.WriteLine("Let's fix your rectangle. Please enter the 3 sides again!");
+                        Console.WriteLine("Please enter a number:");
+                        string stringNumber1 = Console.ReadLine();  
+                        Console.WriteLine("Enter another number:");
+                        string stringNumber2 = Console.ReadLine();   
+                        rect.Side1 = int.Parse(stringNumber1);  
+                        rect.Side2 = int.Parse(stringNumber2);  
+                        ConfirmOrEditRectangle(rect);
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("I didn't get that, lets try again");
+                        Main();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                    }
+
+                     static void CalculateArea(Rectangle rect)
+                    {
+                        int result = rect.AreaOfRectangle();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------");
+                        Console.WriteLine();
+                        Console.WriteLine("Your result is: " + result + ".");
+                        Console.WriteLine();
+                        Console.WriteLine("-----------------------------------------");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("What's next?");
+                        Console.WriteLine("Would you like to check a new triangle (new)?");
+                        
+                        Console.WriteLine("Please enter 'new' to track a new shape. To see all rectangles created, enter 'get', to clear all, enter 'clear'");
+                        string rectUserResponse = Console.ReadLine().ToLower();
+
+
+                        if (rectUserResponse == "new")
+                        {
+                          Console.WriteLine();
+                          Console.WriteLine();
+                            // We are looping back to the start of our program 
+                            Main();
+
+                            
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else if(rectUserResponse == "get")
+                        {
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+
+                          PrintAllRectangles();
+
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else if(rectUserResponse == "clear")
+                        {
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+
+                          ClearAllRectangles();
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else{
+                          Console.WriteLine();
+                          Console.WriteLine();
+                          Console.WriteLine("I'm sorry, I did not get that, let's try again");
+                          Main();
+                        }
+
+                    }
+
+                    static void PrintAllRectangles()
+                    {
+                         Console.WriteLine();
+                        Console.WriteLine("Here are all the rectangles you have created");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        
+                        List<Rectangle> rectangleList = Rectangle.GetAllRectangles();
+
+                        
+                        foreach (Rectangle rectangle in rectangleList)
+                        {
+                            Console.WriteLine($"Rectangle with sides {rectangle.Side1}, {rectangle.Side2} has an area of {rectangle.AreaOfRectangle()}");
+                        }
+                        // rect.GetAllRectangles();
+
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Let's go Again");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Main();
+                    }
+
+                    static void ClearAllRectangles()
+                    {
+                        Rectangle.ClearAllRectangles();
+                        Console.WriteLine("All rectangles have been cleared");
+                    
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Lets go Again");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Main();
+                    }
                 }
 
-            // case "r":
-            //     Console.WriteLine("Yay. Rectangles");
-            // break;
+                  break;
+
+              default:
+                Console.WriteLine("Chill small");
+                break;
+        }
+
+
+
+                }
+
           // default:
           //   break;
         }
@@ -209,10 +373,7 @@ namespace ShapeTracker
 
 
     }
-
   
-
-
 
 
 

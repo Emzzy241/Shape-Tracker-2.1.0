@@ -18,7 +18,7 @@ namespace ShapeTracker.Models
     // Constructor
     public Rectangle(int length1, int length2)
     {
-      _rectSide1 = length1;
+      Side1 = length1;
       Side2 = length2; 
       _rectInstances.Add(this);
     }
@@ -60,3 +60,11 @@ namespace ShapeTracker.Models
   // The static GetAll() method
   // public List<Rectangle> GetAllRectangles
 }
+
+// switch (value)
+// {
+//   case value1:
+//     break;
+//   default:
+//     break;
+// }
