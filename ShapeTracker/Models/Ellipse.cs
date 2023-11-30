@@ -26,12 +26,19 @@ namespace ShapeTracker.Models
 
     public int RadiusVal2 { get; set; }
     
-    public double PI = 3.1415926535897931;
+    private double _pi = 3.1415926535897931;
 
-    public double AreaOfEllipse()
+    public double GetPiVal()
     {
-      return PI * RadiusVal1 * RadiusVal2;
+        return _pi;
     }
+
+    
+
+    // public double AreaOfEllipse()
+    // {
+    //   return PI * RadiusVal1 * RadiusVal2;
+    // }
 
 
 

@@ -85,22 +85,34 @@ namespace ShapeTracker.Tests
                 Assert.AreEqual(myRadiusVal2, myEllipse.RadiusVal2);
             }        
 
-        [TestMethod]
-        public void AreaOfEllipse_CalculatesAreaOfEllipse_Double()
-        {
-            // Arrange
-            int myRadiusVal2 = 7;
-            Ellipse myEllipse = new Ellipse(1, myRadiusVal2);
-            double piValue = 3.1415926535897931;
+        // [TestMethod]
+        // public void AreaOfEllipse_CalculatesAreaOfEllipse_Double()
+        // {
+        //     // Arrange
+        //     int myRadiusVal2 = 7;
+        //     Ellipse myEllipse = new Ellipse(1, myRadiusVal2);
+        //     double piValue = 3.1415926535897931;
 
 
-            // Act
-            double result = myEllipse.AreaOfEllipse();
-            double myAreaValue = piValue * 7 * myRadiusVal2;
+        //     // Act
+        //     double result = myEllipse.AreaOfEllipse();
+        //     double myAreaValue = piValue * 1 * myRadiusVal2;
             
+        //     // Assert
+        //     Assert.AreEqual(myAreaValue, result);
+        // }
+
+        [TestMethod]
+            public void GetPi_ReturnsValueOfPi_Double()
+            {
+            // Arrange
+            double piVal = 3.1415926535897931;
+            Ellipse newEllipse = new Ellipse(2, 3);
+            // Act
+            double result = newEllipse.GetPiVal();
             // Assert
-            Assert.AreEqual(myAreaValue, result);
-        }
+            Assert.AreEqual(piVal, result);
+            }
 
 
 
