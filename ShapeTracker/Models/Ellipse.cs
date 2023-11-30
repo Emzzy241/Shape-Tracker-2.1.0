@@ -10,12 +10,12 @@ namespace ShapeTracker.Models
     // Ellipse code here.
 
     private int _radiusVal1;
-    private int _radiusVal2;
+    // private int _radiusVal2;
 
     public Ellipse(int radVal1, int radVal2)
     {
         _radiusVal1 = radVal1;
-        _radiusVal2 = radVal2;
+        RadiusVal2 = radVal2;
     }
 
     public int RadiusVal1
@@ -23,6 +23,17 @@ namespace ShapeTracker.Models
       get { return _radiusVal1; }
       set { _radiusVal1 = value; }
     }
+
+    public int RadiusVal2 { get; set; }
+    
+    public double PI = 3.1415926535897931;
+
+    public double AreaOfEllipse()
+    {
+      return PI * RadiusVal1 * RadiusVal2;
+    }
+
+
 
 
 
