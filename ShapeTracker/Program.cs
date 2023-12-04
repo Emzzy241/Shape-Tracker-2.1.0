@@ -24,7 +24,7 @@ namespace ShapeTracker
           case "t":
                   Console.WriteLine();
                   Console.WriteLine();
-                  Console.WriteLine("Lets track some Triangles");
+                  Console.WriteLine("Tracking Triangles");
                   
                   Console.WriteLine("We'll calculate what type of triangle you have based off of the lengths of the triangle's 3 sides.");
               
@@ -91,7 +91,14 @@ namespace ShapeTracker
                         }
                         else
                         {
+                          Console.WriteLine();
+                          Console.WriteLine();
                           Console.WriteLine("I'm sorry, I did not get that, let's try again");
+                          Console.WriteLine();
+                          
+                          Main();
+                          Console.WriteLine();
+                          Console.WriteLine();
                           
                         }
                         
@@ -107,7 +114,7 @@ namespace ShapeTracker
                         Console.WriteLine("Your result is: " + result + ".");
                         Console.WriteLine("-----------------------------------------");
                         Console.WriteLine("What's next?");
-                        Console.WriteLine("Would you like to check a new triangle (new)?");
+                        Console.WriteLine("Would you like to check a new shape (new)?");
                         // PrintAllTriangles();
                         Console.WriteLine("Please enter 'new' to track a new shape. To see all triangles created, enter 'get', to clear all, enter 'clear'");
                         string userResponse = Console.ReadLine().ToUpper(); 
@@ -163,6 +170,7 @@ namespace ShapeTracker
                       
                         Console.WriteLine();
                         Console.WriteLine("Here are all the triangles you have created");
+                        Console.WriteLine();
                         List<Triangle> triangleList = Triangle.GetAll();
 
                         
@@ -200,7 +208,7 @@ namespace ShapeTracker
                         
                 break;
             case "r":
-                Console.WriteLine("Let's track some Rectangles");
+                Console.WriteLine("LTracking Rectangles");
                 Console.WriteLine();
                 Console.WriteLine();
 
@@ -260,7 +268,7 @@ namespace ShapeTracker
                         Console.WriteLine();
                         Console.WriteLine("-----------------------------------------");
                         Console.WriteLine();
-                        Console.WriteLine("Your result is: " + result + ".");
+                        Console.WriteLine("The area of rectangle is: " + result + ".");
                         Console.WriteLine();
                         Console.WriteLine("-----------------------------------------");
                         Console.WriteLine();
@@ -320,8 +328,6 @@ namespace ShapeTracker
                          Console.WriteLine();
                         Console.WriteLine("Here are all the rectangles you have created");
                         Console.WriteLine();
-                        Console.WriteLine();
-                        
                         List<Rectangle> rectangleList = Rectangle.GetAllRectangles();
 
                         
@@ -357,9 +363,181 @@ namespace ShapeTracker
 
                   break;
 
+                case "e":
+                  Console.WriteLine();
+                  Console.WriteLine();
+                  Console.WriteLine("Tracking Ellipses");
+                  
+                  Console.WriteLine("We'll calculate area of ellipse based off of 2 radius value for the ellipse.");
+              
+                    // Taking in the inputs from my users
+
+                  Console.WriteLine("Please enter a number");
+                  int firstRad = int.Parse(Console.ReadLine());
+
+                  Console.WriteLine("Enter another number");
+                  int secondRad = int.Parse(Console.ReadLine());
+
+                  Ellipse newEllipse = new Ellipse(firstRad,secondRad);
+
+                  ConfirmOrEditEllipse(newEllipse);
+
+                  static void ConfirmOrEditEllipse(Ellipse myEllipse)
+                  {
+                      Console.WriteLine("Please confirm that you entered in your ellipse correctly:");
+                      Console.WriteLine($"Radius1 has a length of {myEllipse.RadiusVal1}.");
+                      Console.WriteLine($"Radius2 has a length of {myEllipse.RadiusVal2}.");
+                      Console.WriteLine("Is that correct? Enter 'yes' to proceed, or 'no' to re-enter the ellipse's sides. ");
+                      string userInput = Console.ReadLine().ToLower();  
+
+                       if (userInput == "yes")
+                        {
+                            // We can easily add the code here to check the type of the triangle, but we want to practice a good separation of concern; edit functionality is different form triangle type checking functionality, hence we separate them into different methods
+
+                            CalcEllipseArea(myEllipse);
+                        }
+                        else if(userInput == "no")
+                        {
+                            Console.WriteLine("Let's fix your ellipse. Please enter the 2 radius values again!");
+                            Console.WriteLine("Please enter a number for radius1:");
+                            string stringNumber1 = Console.ReadLine();  
+                            Console.WriteLine("Enter another number for radius2:");
+                            string stringNumber2 = Console.ReadLine();  
+                            myEllipse.RadiusVal1 = int.Parse(stringNumber1);  
+                            myEllipse.RadiusVal2 = int.Parse(stringNumber2);  
+                            ConfirmOrEditEllipse(myEllipse);
+
+                            // In any case, keep in mind that you can create a loop by calling on the same method you are declaring within its own definition (eg: calling ConfirmOrEditTriangle() within the ConfirmOrEditTriangle() definition)
+                        }
+                        else
+                        {
+                          Console.WriteLine();
+                          Console.WriteLine();
+                          Console.WriteLine("I'm sorry, I did not get that, let's try again");
+                          Console.WriteLine();
+                          
+                          Main();
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        
+                    }
+
+                    static void CalcEllipseArea(Ellipse myEllipse)
+                    {
+                        double result = myEllipse.AreaOfEllipse();
+                        Console.WriteLine("-----------------------------------------");
+                        Console.WriteLine("The area of ellipse is: " + result + ".");
+                        Console.WriteLine("-----------------------------------------");
+                        Console.WriteLine("What's next?");
+                        Console.WriteLine("Would you like to check a new shape (new)?");
+                        // PrintAllTriangles();
+                        Console.WriteLine("Please enter 'new' to track a new shape. To see all triangles created, enter 'get', to clear all, enter 'clear'");
+                        string userResponse = Console.ReadLine().ToLower(); 
+                        
+                         if (userResponse == "new")
+                        {
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+                            // We are looping back to the start of our program 
+                            Main();
+
+                            
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else if(userResponse == "get")
+                        {
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+
+                          PrintAllEllipse();
+
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else if(userResponse == "clear")
+                        {
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+
+                          ClearAllMyEllipse();
+                          
+                          Console.WriteLine();
+                          Console.WriteLine();
+                        }
+                        else{
+                          Console.WriteLine();
+                          Console.WriteLine();
+                          Console.WriteLine("I'm sorry, I didn't get that, let's try again");
+                          Main();
+                        }
+                    }
+
+                    static void PrintAllEllipse()
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Here are all the ellipses you have created");
+                        Console.WriteLine();
+                        List<Ellipse> ellipseList = Ellipse.GetAllEllipses();
+
+                        
+                        foreach (Ellipse eachEllipse in ellipseList)
+                        {
+                            Console.WriteLine($"Ellipse with radius1 value {eachEllipse.RadiusVal1}, and radius2 value {eachEllipse.RadiusVal2} has the area {eachEllipse.AreaOfEllipse()}");
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Lets go Again");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Main();
+                    }
+
+                     static void ClearAllMyEllipse()
+                    {
+                      // the method below is from the Ellipse.cs class
+                      Ellipse.ClearAllEllipses();
+
+                        Console.WriteLine("All Ellipses cleared");
+                        
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine("Lets go Again");
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Main();
+                    }
+
+
+              break;
+
+              case "k":
+                Console.WriteLine("Good Bye");
+
               default:
-                Console.WriteLine("Chill small");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Didn't get that, lets try again");
+                Console.WriteLine();
+                Console.WriteLine();
+                Main();
+                Console.WriteLine();
+                Console.WriteLine();
                 break;
+
+
+                  }
+
+
+                 
         }
 
 
@@ -372,7 +550,6 @@ namespace ShapeTracker
         
 
 
-    }
   
 
 

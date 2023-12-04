@@ -7,6 +7,7 @@
 * Git
 * C#
 * .NET6.0 Framework
+* MS Test
 
 ## Description
 _This console application makes the tracking of any shape very easy. All you have to do is to input the lengths of the SHape and the console app will hel you track it._

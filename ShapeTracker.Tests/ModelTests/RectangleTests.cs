@@ -106,7 +106,7 @@ namespace ShapeTracker.Tests
             Assert.AreEqual(myArea, result);
         }
 
-        // Eight Test: Test to cgert all rectagles created and their areas
+        // Eight Test: Test to get all rectagles created and their areas
     [TestMethod]
     public void GetAll_ReturnsAllTriangleInstances_List()
     {

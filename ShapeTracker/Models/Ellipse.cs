@@ -12,10 +12,19 @@ namespace ShapeTracker.Models
     private int _radiusVal1;
     // private int _radiusVal2;
 
+    private static List<Ellipse> _ellipseInstances = new List<Ellipse>(){};
+
+
     public Ellipse(int radVal1, int radVal2)
     {
         _radiusVal1 = radVal1;
         RadiusVal2 = radVal2;
+        _ellipseInstances.Add(this);
+    }
+
+    public static List<Ellipse> GetAllEllipses()
+    {
+      return _ellipseInstances;
     }
 
     public int RadiusVal1
@@ -42,7 +51,13 @@ namespace ShapeTracker.Models
       return myPi * RadiusVal1 * RadiusVal2;
     }
 
+    
+    
 
+    public static void ClearAllEllipses()
+    {
+      _ellipseInstances.Clear();
+    }
 
 
 

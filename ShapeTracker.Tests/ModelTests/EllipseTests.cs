@@ -6,12 +6,12 @@ using System;
 namespace ShapeTracker.Tests
 {
     [TestClass]
-    public class EllipseTests //: IDisposable
+    public class EllipseTests : IDisposable
     {
-        // public void Dispose()
-        // {
-        //     Ellipse.ClearAllEllipses();
-        // }
+        public void Dispose()
+        {
+            Ellipse.ClearAllEllipses();
+        }
 
        
         // First Test: Our test will confirm we can successfully create an ellipse object with 2 radius values
@@ -85,6 +85,7 @@ namespace ShapeTracker.Tests
                 Assert.AreEqual(myRadiusVal2, myEllipse.RadiusVal2);
             }        
 
+            // Test if enGetPi()  method can
         [TestMethod]
             public void GetPi_ReturnsValueOfPi_Double()
             {
@@ -97,7 +98,7 @@ namespace ShapeTracker.Tests
             Assert.AreEqual(piVal, result);
             }
 
-            // 
+            // AreaOfEllipse Test
         
         [TestMethod]
         public void AreaOfEllipse_CalculatesAreaOfEllipse_Double()
@@ -116,7 +117,40 @@ namespace ShapeTracker.Tests
             Assert.AreEqual(myAreaValue, result);
         }
 
-        // 
+        // // For getting all ellipses user has created
+
+         [TestMethod]
+        public void GetAllEllipse_ReturnsAllEllipsesCreated_List()
+        {
+            // Arrange
+            int myRadiusVal2 = 7;
+            // Ellipse myEllipse = new Ellipse(1, myRadiusVal2);
+            Ellipse myEli1 = new Ellipse(2, 3);
+            Ellipse myEli2 = new Ellipse(3, myRadiusVal2);
+            Ellipse myEli3 = new Ellipse(10, 2);
+            List<Ellipse> expected  = new List<Ellipse>() {myEli1, myEli2, myEli3};
+                // Act
+                List<Ellipse> actualResult  = Ellipse.GetAllEllipses();
+                // Asset
+                CollectionAssert.AreEqual(expected, actualResult);
+            
+        }
+
+         [TestMethod]
+            public void ClearAll_DeletesAllEllipsesInList_Void()
+            {
+            // Arrange
+            Ellipse ellip1 = new Ellipse(2, 2);
+            Ellipse ellip2 = new Ellipse(21, 3);
+            Ellipse ellip3 = new Ellipse(1, 3);
+            List<Ellipse> expected = new List<Ellipse> { };
+            // Act
+            Ellipse.ClearAllEllipses();
+            // Assert
+            CollectionAssert.AreEqual(expected, Ellipse.GetAllEllipses());
+            }
+
+            // All Test completed, time for the UI
 
 
 
