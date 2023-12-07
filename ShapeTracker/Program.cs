@@ -9,6 +9,13 @@ namespace ShapeTracker
   {
     static void Main()
     {
+        Console.Beep();
+        Console.Beep();
+        Console.Beep();
+        Console.Beep();
+        Console.Beep();
+        Console.BackgroundColor = ConsoleColor.DarkGray;
+        Console.ForegroundColor = ConsoleColor.Red;
         // Calling my welcome property from my banners class
         // Do't forget the auto-implemented property we added there... Its a property, not a method
         Console.WriteLine(WelcomeBanner.Welcome);
@@ -41,9 +48,12 @@ namespace ShapeTracker
 
                 // Console.ReadLine(); taskes in a string, we need to make use of int.Parse() to change it to an integer
 
-                int firstSide = int.Parse(stringNumber1);
-                int secondSide = int.Parse(stringNumber2);
-                int thirdSide = int.Parse(stringNumber3);
+                
+                try
+                {
+                  int firstSide = int.Parse(stringNumber1);
+                  int secondSide = int.Parse(stringNumber2);
+                  int thirdSide = int.Parse(stringNumber3);
 
                 // Making a new instance of the tringle so I can input all of me 3 sides in it
                 Triangle tri = new Triangle(firstSide, secondSide, thirdSide);
@@ -51,6 +61,16 @@ namespace ShapeTracker
                 // NOTE: Any new method we create in our Program class(that contains our UI logic) should be static. We dont want to have to create an instance of the Program class in order to call the method.
                 // Calling the static ConfirmOrEditTriangle() method
                 ConfirmOrEditTriangle(tri);
+
+                }
+                catch
+                {
+                    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Console.WriteLine("ERROR: Please only enter in numbers! Special symbols and alphabetic characters will not be accepted.");
+                    Console.WriteLine("Please try again...");
+                    Main();
+                }
+
   
 
     // Writing the Static ConfirmOrEditTriangle() method
@@ -214,18 +234,28 @@ namespace ShapeTracker
 
                 Console.WriteLine("We'll calculate the area of a rectangle based off of the lengths of 2 sides");
 
-                Console.WriteLine("Please enter a number");
-                string newStringNumber1 = Console.ReadLine();
+                try
+                {
+                    Console.WriteLine("Please enter a number");
+                    string newStringNumber1 = Console.ReadLine();
 
-                Console.WriteLine("Enter another number");
-                string newStringNumber2 = Console.ReadLine();
+                    Console.WriteLine("Enter another number");
+                    string newStringNumber2 = Console.ReadLine();
 
-                 int rectFirstSide = int.Parse(newStringNumber1);
-                int rectSecondSide = int.Parse(newStringNumber2);
+                    int rectFirstSide = int.Parse(newStringNumber1);
+                    int rectSecondSide = int.Parse(newStringNumber2);
 
-                
-                Rectangle rect = new Rectangle(rectFirstSide, rectSecondSide);
-                ConfirmOrEditRectangle(rect);
+                    
+                    Rectangle rect = new Rectangle(rectFirstSide, rectSecondSide);
+                    ConfirmOrEditRectangle(rect);
+                }
+                catch
+                {
+                    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Console.WriteLine("ERROR: Please only enter in numbers! Special symbols and alphabetic characters will not be accepted.");
+                    Console.WriteLine("Please try again...");
+                    Main();
+                }
 
                 static void ConfirmOrEditRectangle(Rectangle rect)
                 {
@@ -372,16 +402,31 @@ namespace ShapeTracker
               
                     // Taking in the inputs from my users
 
-                  Console.WriteLine("Please enter a number");
-                  int firstRad = int.Parse(Console.ReadLine());
+                    // Handling errors with my try...catch block, here I worked with catch as a method
 
-                  Console.WriteLine("Enter another number");
-                  int secondRad = int.Parse(Console.ReadLine());
 
-                  Ellipse newEllipse = new Ellipse(firstRad,secondRad);
+                  try
+                  {
+                      Console.WriteLine("Please enter a number");
+                      int firstRad = int.Parse(Console.ReadLine());
 
-                  ConfirmOrEditEllipse(newEllipse);
+                      Console.WriteLine("Enter another number");
+                      int secondRad = int.Parse(Console.ReadLine());
 
+                      Ellipse newEllipse = new Ellipse(firstRad,secondRad);
+
+                      ConfirmOrEditEllipse(newEllipse);
+
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                      Console.WriteLine("ERROR: {0}", ex.Message);
+                      Console.WriteLine("Please only enter in numbers! Special symbols and alphabetic characters will not be accepted.");
+                      Console.WriteLine("Please try again...");
+                      Main();
+                  }
+                  
                   static void ConfirmOrEditEllipse(Ellipse myEllipse)
                   {
                       Console.WriteLine("Please confirm that you entered in your ellipse correctly:");
@@ -521,6 +566,7 @@ namespace ShapeTracker
 
               case "k":
                 Console.WriteLine("Good Bye");
+                break;
 
               default:
                 Console.WriteLine();
